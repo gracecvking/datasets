@@ -12,7 +12,7 @@ models:
         batch_size: 600
       generate:
         num_records: 75
-        max_invalid: 5000
+        max_invalid: 50000
       privacy_filters:
         outliers: auto
         similarity: auto
