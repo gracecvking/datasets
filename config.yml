@@ -1,5 +1,5 @@
 schema_version: "1.0"
-name: "default-config"
+name: "rdb_synth_simple_test"
 models:
   - synthetics:
       data_source: __tmp__
