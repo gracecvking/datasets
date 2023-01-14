@@ -1,0 +1,34 @@
+schema_version: "1.0"
+name: "user_transforms"
+models:
+  - transforms:
+      data_source: "_"
+      use_nlp: false
+      policies:
+        - name: users_transform
+          rules:
+            - name: last_name
+              conditions:
+                field_name_regex:
+                  - '(?i)^(last|sur|l|family)[\s\-_\.\/]*names?[:\-]*$'
+              transforms:
+                - type: fake
+                  attrs:
+                    method: last_name_nonbinary
+            - name: first_name
+                  conditions:
+                    field_name_regex:
+                      - '(?i)^(first|nick|given|personal|christian|primary|fore|f)[\s\-_\.\/]*names?[:\-]*$'
+                  transforms:
+                    - type: fake
+                      attrs:
+                        method: first_name_nonbinary
+            - name: fake_or_redact_pii
+              conditions:
+                field_label:
+                  - ssn
+              transforms:
+                - type: fake
+                - type: redact_with_char
+                  attrs:
+                    char: X
