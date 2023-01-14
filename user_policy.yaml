@@ -16,13 +16,13 @@ models:
                   attrs:
                     method: last_name_nonbinary
             - name: first_name
-                  conditions:
-                    field_name_regex:
-                      - '(?i)^(first|nick|given|personal|christian|primary|fore|f)[\s\-_\.\/]*names?[:\-]*$'
-                  transforms:
-                    - type: fake
-                      attrs:
-                        method: first_name_nonbinary
+              conditions:
+                field_name_regex:
+                  - '(?i)^(first|nick|given|personal|christian|primary|fore|f)[\s\-_\.\/]*names?[:\-]*$'
+              transforms:
+                - type: fake
+                  attrs:
+                    method: first_name_nonbinary
             - name: fake_or_redact_pii
               conditions:
                 field_label:
