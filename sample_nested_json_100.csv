@@ -1,4 +1,4 @@
-purchase_id,user_id,status,purchases
+purchase_id,user_id,status,products
 1,1,pending,"[
     {
         ""product"": ""T-shirt"",
