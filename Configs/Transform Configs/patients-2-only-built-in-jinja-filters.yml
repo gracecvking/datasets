@@ -1,4 +1,5 @@
 schema_version: "1.0"
+name: "claude-patients-only-builtin-jinja-filters"
 models:
   - transform_v2:
       globals:
