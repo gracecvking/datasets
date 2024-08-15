@@ -1,0 +1,29 @@
+schema_version: "1.0"
+name: "claude-for-fake-emails-only-col-names-and-desc"
+models:
+  - transform_v2:
+      globals:
+        classify:
+          enable: true
+          entities:
+            - email
+            - person
+            - phone_number
+            - credit_card
+            - ip_address
+            - location
+          num_samples: 5
+        locales: ["en_US"]
+      steps:
+        - columns:
+            rename:
+              - name: from
+                value: email_from
+        - rows:
+          update:
+            - name: email_from
+              value: column.entity | fake
+            - name: subject
+              value: this | fake_entities(on_error="redact")
+            - name: email_body
+              value: this | fake_entities(on_error="redact")
