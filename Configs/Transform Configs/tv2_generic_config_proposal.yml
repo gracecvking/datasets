@@ -1,0 +1,14 @@
+models:                                                    
+  - transform_v2:                                          
+      globals:                                             
+        classify:                                          
+          enable: True                                     
+          num_samples: 10                                  
+      data_source: "_"                                     
+      steps:                                               
+        - rows:                                            
+            update:                                        
+              - condition: column.entity is not none       
+                value: column.entity | fake                
+              - condition: column.entity is none           
+                value: this | fake_entities(on_error="hash")

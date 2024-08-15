@@ -1,0 +1,49 @@
+schema_version: "1.0"
+models:
+  - transform_v2:
+      globals:
+        classify:
+          enable: true
+          entities:
+            - first_name
+            - last_name
+            - email
+            - phone_number
+            - address
+            - city
+            - state
+            - country
+            - postal_code
+      steps:
+        - rows:
+            update:
+              - entity: first_name
+                value: fake.first_name()
+              - entity: last_name
+                value: fake.last_name()
+              - entity: email
+                value: fake.email()
+              - entity: phone_number
+                value: fake.phone_number()
+              - entity: address
+                value: fake.street_address()
+              - entity: city
+                value: fake.city()
+              - entity: state
+                value: fake.state()
+              - entity: country
+                value: fake.country()
+              - entity: postal_code
+                value: fake.postcode()
+              - name: age
+                value: (this | int) + (range(-5, 6) | random)
+              - name: last_visit
+                value: fake.date_between(start_date='-60d', end_date='today')
+              - name: next_visit
+                value: fake.date_between(start_date='today', end_date='+60d')
+              - name: height
+                value: (this | float) + ([-2, -1, 0, 1, 2] | random)
+              - name: weight
+                value: (this | float) + (range(-10, 11) | random)
+              - name: heart_rate
+                value: (this | int) + (range(-5, 6) | random)
