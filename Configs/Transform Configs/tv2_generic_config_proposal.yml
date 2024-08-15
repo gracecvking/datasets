@@ -1,3 +1,5 @@
+schema_version: "1.0"
+name: "generic-tv2-proposed"
 models:                                                    
   - transform_v2:                                          
       globals:                                             
